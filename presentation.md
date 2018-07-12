@@ -51,10 +51,10 @@ Self-Management of Databases
 
 - _Tuning of parameters of Database Management Systems_
   + like cache amount and frequency of writing to storage
-  + implementations like OtterTune from Database Research Group at Carnegie Mellon University
+  + implementations like OtterTune *by Database Research Group at Carnegie Mellon University*
 - _Elastic Scaling of Machine Allocation_
   + avoid latency spikes by action prediction through time-series prediction
-  + implementations like P-Store by Taft, MIT
+  + implementations like P-Store *by Taft, MIT*
 - _Learned Index Structures_
   + a "model can learn the sort order or structure of lookup keys and use this signal to effectively predict the position or existence of records"
   + alternative technology to exisiting Bloom-Filters or B-Trees
@@ -146,11 +146,14 @@ performance
 \includegraphics[width=\textwidth]{cuttle.png}
 
 
-### TODO: Conclusion
+### Conclusion
 
-#### *TODO*
+#### Optimization
+- Allows for greater optimization of complex problems
+- e.g. Cuttlefish achieves 7.5x speedup to other query optimizers *Cuttlefish: A Lightweight Primitive for Adaptive Query Processing*
 
-
+#### Development difficult
+- No Tools and unexperienced developers
 
 ### Thank you for your attention.
 
