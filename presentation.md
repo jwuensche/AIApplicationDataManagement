@@ -31,18 +31,22 @@ Short Summary of Natural Language Interfaces, ML in DB and Data Managment Applic
 - quite old concept improved by modern hardware and technology
 
 #### Machine Learning in Databases
-
+- machine learning methods on data
+- e.g. *Apache MADlib*, which implements
+	+ decision trees
+	+ random forest
+	+ bayes classifier
+	+ clustering
+	+ association rules
+	+ ...
 
 ### Data Management Applications
 
-\begin{center}
-\includegraphics[height=0.7\textheight]{deeper.png}
-\end{center}
+![*by DeepER-Deep Entity Resolution, Muhammad Ebraheem et al*](deeper.png){ height=50% }
 
 #### Entity Resolution
 - Finding of Records that refer to the same entity
 - Required if shape of data is not unitary
-
 
 Self-Management of Databases
 ============================
@@ -69,7 +73,37 @@ Self-Management of Databases
 
 \includegraphics[width=\textwidth]{learnedindexvbtree.png}
 
+### Learned Index Structures
+- Performance of Index Access can be unintuitively enhanced by predicting the index of a searched instance with a Neural Network or Linear Regression
+- Shown to result in equally good or better performance than conventional Index Structures
+
 ### Learned Index Structures by Example
+
+#### Searching for a index
+- Similar to every other model used
+- Transform key to vector and use as input for trained NN
+
+
+
+### Enhancement of LIS: Recursive Model Index(RMI)
+\begin{center}
+\includegraphics[height=0.6\textheight]{rmi.png}
+\end{center}
+- refinement of models after every step to better display details
+- 
+
+### Learned Index Strucutures Result
+
+![*The Case for Learned Index Structures by Kraska et al*](lisresult.png)
+
+### Learned Index Structures Conclusion
+
+#### Advantages
+- can take advantage of real world data patterns(ML) &rarr; allows for high optimization
+- lower engineering costs
+
+#### Disadvantages
+- initial work on B-Trees and alike is lower since they do not require additional training
 
 Software 2.0
 ============
