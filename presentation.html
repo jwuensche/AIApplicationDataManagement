@@ -1,0 +1,645 @@
+\hypertarget{overview-of-ai-techniques-in-database-management}{%
+\section{Overview of AI Techniques in Database
+Management}\label{overview-of-ai-techniques-in-database-management}}
+
+\begin{frame}{Overview of AI Techniques in Database Management}
+\protect\hypertarget{overview-of-ai-techniques-in-database-management-1}{}
+
+\begin{center}
+\includegraphics[height=0.95\textheight]{overview.pdf}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Agenda}
+\protect\hypertarget{agenda}{}
+
+\tableofcontents
+
+\end{frame}
+
+\hypertarget{short-summary-of-natural-language-interfaces-ml-in-db-and-data-managment-applications}{%
+\section{Short Summary of Natural Language Interfaces, ML in DB and Data
+Managment
+Applications}\label{short-summary-of-natural-language-interfaces-ml-in-db-and-data-managment-applications}}
+
+\begin{frame}{Natural Language Interfaces \& ML in DB}
+\protect\hypertarget{natural-language-interfaces-ml-in-db}{}
+
+\begin{block}{Natural Language Interfaces}
+
+\begin{itemize}
+\tightlist
+\item
+  Idea of using AI to interpret NL questions or requests and react
+  accordingly
+\item
+  Quite old concept improved by modern hardware and technology
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth,height=\textheight]{seq2sql.png}
+\caption{\emph{SEQ2SQL: GENERATING STRUCTURED QUERIES FROM NATURAL
+LANGUAGE USING REINFORCEMENT LEARNING, Zhong et al}}
+\end{figure}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{block}{Machine Learning in Databases}
+
+\begin{itemize}
+\tightlist
+\item
+  Machine learning methods on data
+\item
+  Reduces data movement by putting libraries in the database
+\item
+  e.g.~2010s Parameter Server(distributed training), Apache
+  Spark(framework for distribution of tasks for analytics),
+  `\emph{Apache MADlib}, which implements
+
+  \begin{itemize}
+  \tightlist
+  \item
+    bayes classifier
+  \item
+    clustering
+  \item
+    association rules
+  \item
+    \ldots{}
+  \end{itemize}
+\item
+  or 2000s \emph{scikit-learn}(easy to use ML-library)
+\item
+  90s \emph{R} and \emph{Weka}
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Data Management Applications}
+\protect\hypertarget{data-management-applications}{}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.5\textheight]{deeper.png}
+\caption{\emph{DeepER-Deep Entity Resolution, Muhammad Ebraheem et al}}
+\end{figure}
+
+\begin{block}{Entity Resolution}
+
+\begin{itemize}
+\tightlist
+\item
+  Finding of Records that refer to the same entity
+\item
+  Required if data does not have a single representation
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\hypertarget{self-management-of-databases}{%
+\section{Self-Management of
+Databases}\label{self-management-of-databases}}
+
+\begin{frame}{Self-Management of Databases}
+\protect\hypertarget{self-management-of-databases-1}{}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Elastic Scaling of Machine Allocation}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    avoid latency spikes by action prediction through time-series
+    prediction
+  \item
+    implementations like P-Store \emph{by Taft, MIT}
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.6\textheight]{pstore.png}
+\caption{\emph{http://www.hpts.ws/papers/2017/taft.pdf}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Self-Management of Databases}
+\protect\hypertarget{self-management-of-databases-2}{}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Tuning of parameters of Database Management Systems}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    like cache amount and frequency of writing to storage
+  \item
+    implementations like OtterTune \emph{by Database Research Group at
+    Carnegie Mellon University}
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\textwidth,height=\textheight]{ottertune.png}
+\caption{\emph{Automatic Database Management System Tuning Through
+Large-scale Machine Learning, Van Aken et al}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Self-Management of Databases}
+\protect\hypertarget{self-management-of-databases-3}{}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Peloton - Self Driving Database}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    replacement of human database manager
+  \end{itemize}
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics{peloton.png}
+\caption{\emph{Self-Driving Database Management Systems, Pavlo et al}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Overview of AI Techniques in Database Management}
+\protect\hypertarget{overview-of-ai-techniques-in-database-management-2}{}
+
+\begin{center}
+\includegraphics[height=0.95\textheight]{overview.pdf}
+\end{center}
+
+\end{frame}
+
+\begin{frame}{Learned Index Structures}
+\protect\hypertarget{learned-index-structures}{}
+
+\begin{block}{\emph{Learned Index Structures}}
+
+\begin{itemize}
+\tightlist
+\item
+  a ``model can learn the sort order or structure of lookup keys and use
+  this signal to effectively predict the position or existence of
+  records''
+\item
+  alternative technology to exisiting Bloom-Filters or B-Trees
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Learned Index Structures}
+\protect\hypertarget{learned-index-structures-2}{}
+
+\begin{block}{What's the difference between Learned Index Structures and
+existing Approaches?}
+
+\begin{figure}
+\centering
+\includegraphics{learnedindexvbtree.png}
+\caption{\emph{The Case for Learned Index Structures by Kraska et al}}
+\end{figure}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Learned Index Structures}
+\protect\hypertarget{learned-index-structures-3}{}
+
+\begin{itemize}
+\tightlist
+\item
+  Performance of Index Access can be unintuitively enhanced by
+  predicting the index of a searched instance with a Neural Network or
+  Linear Regression
+\item
+  Shown to result in equally good or better performance than
+  conventional Index Structures
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Learned Index Structures by Example}
+\protect\hypertarget{learned-index-structures-by-example}{}
+
+\begin{block}{Searching the index of a key}
+
+\begin{itemize}
+\tightlist
+\item
+  Similar to every other model used
+\item
+  Transform key to vector and use as input for trained NN
+\item
+  Result will be the index of the searched key
+\item
+  Effective for read-only database
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{block}{Inserting or Updating a key}
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Append}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    possible but only in a few cases
+  \item
+    like adding sequential logs in order
+  \item
+    LIS can learn the pattern also for future data
+  \item
+    appending reduced to \(O(1)\)
+  \item
+    to compare B-Trees need in any case \(O(\text{log } n)\)
+  \end{itemize}
+\item
+  \emph{Insert in the middle}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    theoretically possible, but practically difficult
+  \item
+    can similarly be prelearned
+  \item
+    but moving of data or reservation of space might be required
+  \end{itemize}
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Learned Index Structures Result}
+\protect\hypertarget{learned-index-structures-result}{}
+
+\begin{figure}
+\centering
+\includegraphics{lisresult.png}
+\caption{\emph{The Case for Learned Index Structures by Kraska et al}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}{Enhancement of LIS: Recursive Model Index(RMI)}
+\protect\hypertarget{enhancement-of-lis-recursive-model-indexrmi}{}
+
+\begin{figure}
+\centering
+\includegraphics{rmi.png}
+\caption{\emph{The Case for Learned Index Structures by Kraska et al}}
+\end{figure}
+
+\end{frame}
+
+\begin{frame}
+
+\begin{itemize}
+\tightlist
+\item
+  Refinement of models after every step
+\item
+  Easier to achieve than one large model
+\item
+  After one layer is completed the result will be moved to the according
+  lower level model until a leaf is reached
+\item
+  Enable mixture of different technologies to optimize the model
+
+  \begin{itemize}
+  \tightlist
+  \item
+    NN
+  \item
+    Linear Regression
+  \item
+    B-Trees
+  \item
+    \ldots{}
+  \end{itemize}
+\item
+  They are also applicable for hashmaps and Bloomfilter replacements
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{RMI Example}
+\protect\hypertarget{rmi-example}{}
+
+\begin{enumerate}
+\tightlist
+\item
+  Classification
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    Use key as input
+  \item
+    Calculate output of the classification neural network
+  \item
+    1 - 12 - 8 - 4 (Example Construction)
+  \item
+    Apply sigmoid to output → highest value model get chosen
+  \end{enumerate}
+\item
+  Linear Regresssion
+
+  \begin{enumerate}
+  \tightlist
+  \item
+    1 - 8 - 1 Auto Encoder
+  \item
+    Result is predicted position
+  \end{enumerate}
+\end{enumerate}
+
+\end{frame}
+
+\begin{frame}{Learned Index Structures Conclusion}
+\protect\hypertarget{learned-index-structures-conclusion}{}
+
+\begin{block}{Advantages}
+
+\begin{itemize}
+\tightlist
+\item
+  Can take advantage of real world data patterns(ML) → allows for high
+  optimization
+\item
+  Lower engineering costs
+\item
+  Can lead to quicker adjustment of models during runtime
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Disadvantages}
+
+\begin{itemize}
+\tightlist
+\item
+  Initial work on B-Trees and alike is lower since they do not require
+  additional training
+\item
+  Some open questions still remain as well as long term performance
+  tests in real world systems
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\hypertarget{optimization-by-software-2.0}{%
+\section{Optimization by ``Software
+2.0''}\label{optimization-by-software-2.0}}
+
+\begin{frame}{Intro}
+\protect\hypertarget{intro}{}
+
+\begin{itemize}
+\item
+  Major downsides like difficult optimization of code and human error in
+  classical software development
+\item
+  Doesn't base on declarative programming and tries to learn the desired
+  functionality with a approximate base net
+\item
+  Enabled by development of Neural Networks in last 20 years allowing
+  \textgreater{}100 layers deep networks
+\item
+  Program space is restricted for future training (backpropagation,
+  gradient descent)
+\item
+  Many real world problems easier to detect desirable behaviour than to
+  write a specific program
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}{Advantages}
+\protect\hypertarget{advantages-1}{}
+
+\begin{block}{Higher Portability}
+
+\begin{itemize}
+\tightlist
+\item
+  Smaller operation set
+\item
+  Matrix Multiplication and thresholding at zero required
+\item
+  Small instruction set of chips with pretrained nets allows for cheap
+  and specialised hardware
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Better Performance}
+
+\begin{itemize}
+\tightlist
+\item
+  Allows for better performance and correctness predictions because
+  closer implementation in hardware less core primitives are needed
+\item
+  Modules can be introduced to a single module reducing communication
+  overhead by sacrificing clarity of separation, which is due to the
+  human unlike nature of S2.0 sacrificed beforehand either way
+\item
+  Well trained neural nets outperform code implementation
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Advantages}
+\protect\hypertarget{advantages-2}{}
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.5\textheight]{so2.png}
+\caption{\emph{https://medium.com/@karpathy/software-2-0-a64152b37c35,
+Karpathy}}
+\end{figure}
+
+\begin{block}{Better Runtime Predictability}
+
+\begin{itemize}
+\tightlist
+\item
+  Requires same amount of memory each iteration → low probability of
+  infinite loops or locks
+\item
+  Speed well adjustable → speed can easily improved by reducing
+  performance
+\end{itemize}
+
+master thesis taranpreet kaur table note
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Disadvantages}
+\protect\hypertarget{disadvantages-1}{}
+
+\begin{block}{Unintuitivity}
+
+\begin{itemize}
+\tightlist
+\item
+  Can be treated as different new paradigm → requires rethinking of
+  development style
+\item
+  Even though the network may work well, for humans difficult to
+  understand
+\item
+  Developing S2.0 is unintuitive and not well developed
+\item
+  Requires manually curating, maintaining, cleaning and labeling of
+  datasets
+\item
+  May not be applicable easily to all problems
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Disadvantages}
+\protect\hypertarget{disadvantages-2}{}
+
+\begin{block}{Nonrecognizable errors}
+
+\begin{itemize}
+\tightlist
+\item
+  Errors may occur unpredictable
+\item
+  Can silently fail due to changed biases (hard to track since a large
+  amount of them are being trained)
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Lack of Tools}
+
+\begin{itemize}
+\tightlist
+\item
+  No tools currently exist that support the development process like
+  IDE, highlighting and alike as for classical software
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Low Experience}
+
+\begin{itemize}
+\tightlist
+\item
+  Effective in some implementations but not as general approach
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Conclusion}
+\protect\hypertarget{conclusion}{}
+
+\begin{block}{Optimization}
+
+\begin{itemize}
+\tightlist
+\item
+  Allows for greater optimization of specific complex problems
+\item
+  e.g.~Cuttlefish achieves 7.5x speedup to other query optimizers
+  \emph{Cuttlefish: A Lightweight Primitive for Adaptive Query
+  Processing}
+\end{itemize}
+
+\end{block}
+
+\begin{block}{Development difficult}
+
+\begin{itemize}
+\tightlist
+\item
+  No Tools and unexperienced developers
+\item
+  Generally low usage experience
+\end{itemize}
+
+\end{block}
+
+\end{frame}
+
+\begin{frame}{Thank you for your attention.}
+\protect\hypertarget{thank-you-for-your-attention.}{}
+
+Do you have any questions? Ideas?\\
+Be free to ask them.
+
+\end{frame}
+
+\begin{frame}{Sources}
+\protect\hypertarget{sources}{}
+
+KRASKA, Tim, et al.~The case for learned index structures. In:
+Proceedings of the 2018 International Conference on Management of Data.
+ACM, 2018. S. 489-504.a
+
+KAFTAN, Tomer, et al.~Cuttlefish: A Lightweight Primitive for Adaptive
+Query Processing. arXiv preprint arXiv:1802.09180, 2018.
+
+EBRAHEEM, Muhammad, et al.~DeepER--Deep Entity Resolution. arXiv
+preprint arXiv:1710.00597, 2017.
+
+https://medium.com/@karpathy/software-2-0-a64152b37c35 - Andrej Karpathy
+Software 2.0
+
+http://madlib.apache.org/ - Apache MadLIB Information
+
+\end{frame}

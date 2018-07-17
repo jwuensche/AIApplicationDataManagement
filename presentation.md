@@ -9,17 +9,18 @@ colortheme: crane
 fonttheme: professionalfonts
 ---
 
+Overview of AI Techniques in Database Management
+================================================
+
+### Overview of AI Techniques in Database Management
+\begin{center}
+\includegraphics[height=0.95\textheight]{overview.pdf}
+\end{center}
+
 
 ### Agenda
 
 \tableofcontents
-Overview
-========
-
-### Overview
-\begin{center}
-\includegraphics[height=0.95\textheight]{overview.pdf}
-\end{center}
 
 Short Summary of Natural Language Interfaces, ML in DB and Data Managment Applications
 =======================================================================================
@@ -30,15 +31,22 @@ Short Summary of Natural Language Interfaces, ML in DB and Data Managment Applic
 - Idea of using AI to interpret NL questions or requests and react accordingly
 - Quite old concept improved by modern hardware and technology
 
+![*SEQ2SQL: GENERATING STRUCTURED QUERIES
+FROM NATURAL LANGUAGE USING REINFORCEMENT
+LEARNING, Zhong et al*](seq2sql.png){ width=90% }
+
+---
+
 #### Machine Learning in Databases
 - Machine learning methods on data
-- e.g. *Apache MADlib*, which implements
-	+ decision trees
-	+ random forest
+- Reduces data movement by putting libraries in the database
+- e.g. 2010s Parameter Server(distributed training), Apache Spark(framework for distribution of tasks for analytics), `*Apache MADlib*, which implements
 	+ bayes classifier
 	+ clustering
 	+ association rules
 	+ ...
+- or 2000s *scikit-learn*(easy to use ML-library)
+- 90s *R* and *Weka*
 
 ### Data Management Applications
 
@@ -53,12 +61,31 @@ Self-Management of Databases
 
 ### Self-Management of Databases
 
-- _Tuning of parameters of Database Management Systems_
-  + like cache amount and frequency of writing to storage
-  + implementations like OtterTune *by Database Research Group at Carnegie Mellon University*
 - _Elastic Scaling of Machine Allocation_
   + avoid latency spikes by action prediction through time-series prediction
   + implementations like P-Store *by Taft, MIT*
+
+![*http://www.hpts.ws/papers/2017/taft.pdf*](pstore.png){ height=60% }
+
+### Self-Management of Databases
+
+- _Tuning of parameters of Database Management Systems_
+  + like cache amount and frequency of writing to storage
+  + implementations like OtterTune *by Database Research Group at Carnegie Mellon University*
+
+![*Automatic Database Management System Tuning Through Large-scale Machine Learning, Van Aken et al*](ottertune.png){ width=90% }
+
+### Self-Management of Databases
+
+- _Peloton - Self Driving Database_
+	+ replacement of human database manager
+
+![*Self-Driving Database Management Systems, Pavlo et al*](peloton.png)
+
+### Overview of AI Techniques in Database Management
+\begin{center}
+\includegraphics[height=0.95\textheight]{overview.pdf}
+\end{center}
 
 ### Learned Index Structures
 
@@ -82,20 +109,23 @@ Self-Management of Databases
 - Similar to every other model used
 - Transform key to vector and use as input for trained NN
 - Result will be the index of the searched key
+- Effective for read-only database
+
+---
 
 #### Inserting or Updating a key
 - *Append*
+	+ possible but only in a few cases
 	+ like adding sequential logs in order
 	+ LIS can learn the pattern also for future data
 	+ appending reduced to $O(1)$
 	+ to compare B-Trees need in any case $O(\text{log } n)$
 - *Insert in the middle*
+	+ theoretically possible, but practically difficult
 	+ can similarly be prelearned
 	+ but moving of data or reservation of space might be required
 
-
-
-### Learned Index Strucutures Result
+### Learned Index Structures Result
 
 ![*The Case for Learned Index Structures by Kraska et al*](lisresult.png)
 
@@ -112,6 +142,20 @@ Self-Management of Databases
 	+ Linear Regression
 	+ B-Trees
 	+ ...
+
+
+- They are also applicable for hashmaps and Bloomfilter replacements
+
+### RMI Example
+
+1. Classification
+	1. Use key as input
+	2. Calculate output of the classification neural network
+	3. 1 - 12 - 8 - 4 (Example Construction)
+	4. Apply sigmoid to output &rarr; highest value model get chosen
+2. Linear Regresssion
+	1. 1 - 8 - 1 Auto Encoder
+	2. Result is predicted position
 
 ### Learned Index Structures Conclusion
 
@@ -169,6 +213,7 @@ probability of infinite loops or locks
 - Speed well adjustable &rarr; speed can easily improved by reducing
 performance
 
+master thesis taranpreet kaur table note
 
 ### Disadvantages
 
@@ -192,11 +237,6 @@ performance
 
 #### Low Experience
 - Effective in some implementations but not as general approach
-
-### Example
-
-#### Cuttlefish
-![*Cuttlefish: A Lightweight Primitive for Adaptive Query Processing, Kaftan et al*](cuttle.png)
 
 ### Conclusion
 
