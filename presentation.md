@@ -28,10 +28,10 @@ Short Summary of Natural Language Interfaces, ML in DB and Data Managment Applic
 
 #### Natural Language Interfaces
 - Idea of using AI to interpret NL questions or requests and react accordingly
-- quite old concept improved by modern hardware and technology
+- Quite old concept improved by modern hardware and technology
 
 #### Machine Learning in Databases
-- machine learning methods on data
+- Machine learning methods on data
 - e.g. *Apache MADlib*, which implements
 	+ decision trees
 	+ random forest
@@ -42,11 +42,11 @@ Short Summary of Natural Language Interfaces, ML in DB and Data Managment Applic
 
 ### Data Management Applications
 
-![*by DeepER-Deep Entity Resolution, Muhammad Ebraheem et al*](deeper.png){ height=50% }
+![*DeepER-Deep Entity Resolution, Muhammad Ebraheem et al*](deeper.png){ height=50% }
 
 #### Entity Resolution
 - Finding of Records that refer to the same entity
-- Required if shape of data is not unitary
+- Required if data does not have a single representation
 
 Self-Management of Databases
 ============================
@@ -59,19 +59,18 @@ Self-Management of Databases
 - _Elastic Scaling of Machine Allocation_
   + avoid latency spikes by action prediction through time-series prediction
   + implementations like P-Store *by Taft, MIT*
-- _Learned Index Structures_
-  + a "model can learn the sort order or structure of lookup keys and use this signal to effectively predict the position or existence of records"
-  + alternative technology to exisiting Bloom-Filters or B-Trees
-
-### B-Tree Bloom-Filter
-\includegraphics[width=0.45\textwidth]{B-tree.png}
-\includegraphics[width=0.45\textwidth]{Bloom_filter.png}
 
 ### Learned Index Structures
 
-#### What's the difference between Learned Index Structures and existing Models?
+#### _Learned Index Structures_
+  + a "model can learn the sort order or structure of lookup keys and use this signal to effectively predict the position or existence of records"
+  + alternative technology to exisiting Bloom-Filters or B-Trees
 
-\includegraphics[width=\textwidth]{learnedindexvbtree.png}
+### Learned Index Structures
+
+#### What's the difference between Learned Index Structures and existing Approaches?
+
+![*The Case for Learned Index Structures by Kraska et al*](learnedindexvbtree.png)
 
 ### Learned Index Structures
 - Performance of Index Access can be unintuitively enhanced by predicting the index of a searched instance with a Neural Network or Linear Regression
@@ -79,49 +78,69 @@ Self-Management of Databases
 
 ### Learned Index Structures by Example
 
-#### Searching for a index
+#### Searching the index of a key
 - Similar to every other model used
 - Transform key to vector and use as input for trained NN
+- Result will be the index of the searched key
+
+#### Inserting or Updating a key
+- *Append*
+	+ like adding sequential logs in order
+	+ LIS can learn the pattern also for future data
+	+ appending reduced to $O(1)$
+	+ to compare B-Trees need in any case $O(\text{log } n)$
+- *Insert in the middle*
+	+ can similarly be prelearned
+	+ but moving of data or reservation of space might be required
 
 
-
-### Enhancement of LIS: Recursive Model Index(RMI)
-\begin{center}
-\includegraphics[height=0.6\textheight]{rmi.png}
-\end{center}
-- refinement of models after every step to better display details
-- 
 
 ### Learned Index Strucutures Result
 
 ![*The Case for Learned Index Structures by Kraska et al*](lisresult.png)
 
+### Enhancement of LIS: Recursive Model Index(RMI)
+![*The Case for Learned Index Structures by Kraska et al*](rmi.png)
+
+---
+
+- Refinement of models after every step
+- Easier to achieve than one large model
+- After one layer is completed the result will be moved to the according lower level model until a leaf is reached
+- Enable mixture of different technologies to optimize the model
+	+ NN
+	+ Linear Regression
+	+ B-Trees
+	+ ...
+
 ### Learned Index Structures Conclusion
 
 #### Advantages
-- can take advantage of real world data patterns(ML) &rarr; allows for high optimization
-- lower engineering costs
+- Can take advantage of real world data patterns(ML) &rarr; allows for high optimization
+- Lower engineering costs
+- Can lead to quicker adjustment of models during runtime
 
 #### Disadvantages
-- initial work on B-Trees and alike is lower since they do not require additional training
+- Initial work on B-Trees and alike is lower since they do not require additional training
+- Some open questions still remain as well as long term performance tests in real world systems
 
-Software 2.0
-============
+Optimization by "Software 2.0"
+==============================
 
 ### Intro
 
--   Classical Software Dev major downsides like difficult optimization
-    of code and human error
+-   Major downsides like difficult optimization
+    of code and human error in classical software development
 
--   S2.0 doesn't base on declarative programming and tries to learn the
+-   Doesn't base on declarative programming and tries to learn the
     desired functionality with a approximate base net
 
-- enabled by development of Neural Networks in last 20 years allowing >100 layers deep networks
+-   Enabled by development of Neural Networks in last 20 years allowing >100 layers deep networks
 
--   program space is restricted for future training (backpropagation,
-    gradien descent)
+-   Program space is restricted for future training (backpropagation,
+    gradient descent)
 
--   many real world problems easier to detect desirable behaviour than
+-   Many real world problems easier to detect desirable behaviour than
     to write a specific program
 
 ### Advantages
@@ -130,66 +149,78 @@ Software 2.0
 
 -   Smaller operation set
   + Matrix Multiplication and thresholding at zero required
--   small instruction set of chips with pretrained nets allows for
+-   Small instruction set of chips with pretrained nets allows for cheap and specialised hardware
 
 #### Better Performance
 
--   allows for better performance and correctness predictions because
+-   Allows for better performance and correctness predictions because
     closer implementation in hardware less core primitives are needed
--   modules can be introduced to a single module reducing communication
+-   Modules can be introduced to a single module reducing communication
     overhead by sacrificing clarity of separation, which is due to the
-    human unlike nature of so2 sacrificed beforehand either way
--   well trained neural nets outperform code implementation
+    human unlike nature of S2.0 sacrificed beforehand either way
+-   Well trained neural nets outperform code implementation
 
 ### Advantages
-\begin{center}
-\includegraphics[height=0.5\textheight]{so2.png}
-\end{center}
+![*https://medium.com/@karpathy/software-2-0-a64152b37c35, Karpathy*](so2.png){ height=50% }
 
 #### Better Runtime Predictability
--   requires same amount of memory each iteration &rarr; low
+- Requires same amount of memory each iteration &rarr; low
 probability of infinite loops or locks
--   speed well adjustable &rarr; speed can easily improved by reducing
+- Speed well adjustable &rarr; speed can easily improved by reducing
 performance
 
 
 ### Disadvantages
 
 #### Unintuitivity
-- can be treated as different new paradigm &rarr; requires rethinking of development style
--   even though the network may work well, for humans difficult to
-    understand
--   developing in so2 is unintuitive and not well developed
-- requires manually curating, maintaining, cleaning and labelling of datasets
-- may not be applicable easily to all problems
+- Can be treated as different new paradigm &rarr; requires rethinking of development style
+- Even though the network may work well, for humans difficult to
+  understand
+- Developing S2.0 is unintuitive and not well developed
+- Requires manually curating, maintaining, cleaning and labeling of datasets
+- May not be applicable easily to all problems
 
 ### Disadvantages
 
 #### Nonrecognizable errors
--   errors may occur unpredictable
--   can silently fail due to changed biases (hard to track since a large
+-   Errors may occur unpredictable
+-   Can silently fail due to changed biases (hard to track since a large
     amount of them are being trained)
 
 #### Lack of Tools
-- no tools exist that support the development process like IDE, highlighting and alike for classical software
+- No tools currently exist that support the development process like IDE, highlighting and alike as for classical software
 
+#### Low Experience
+- Effective in some implementations but not as general approach
 
 ### Example
 
 #### Cuttlefish
-\includegraphics[width=\textwidth]{cuttle.png}
-
+![*Cuttlefish: A Lightweight Primitive for Adaptive Query Processing, Kaftan et al*](cuttle.png)
 
 ### Conclusion
 
 #### Optimization
-- Allows for greater optimization of complex problems
+- Allows for greater optimization of specific complex problems
 - e.g. Cuttlefish achieves 7.5x speedup to other query optimizers *Cuttlefish: A Lightweight Primitive for Adaptive Query Processing*
 
 #### Development difficult
 - No Tools and unexperienced developers
+- Generally low usage experience
 
 ### Thank you for your attention.
 
 Do you have any questions? Ideas?  
 Be free to ask them.
+
+### Sources
+KRASKA, Tim, et al. The case for learned index structures. In: Proceedings of the 2018 International Conference on Management of Data. ACM, 2018. S. 489-504.a
+
+KAFTAN, Tomer, et al. Cuttlefish: A Lightweight Primitive for Adaptive Query Processing. arXiv preprint arXiv:1802.09180, 2018.
+
+EBRAHEEM, Muhammad, et al. DeepER--Deep Entity Resolution. arXiv preprint arXiv:1710.00597, 2017.
+
+https://medium.com/@karpathy/software-2-0-a64152b37c35 - Andrej Karpathy Software 2.0
+
+http://madlib.apache.org/ - Apache MadLIB Information
+
