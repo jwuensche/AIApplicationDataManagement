@@ -40,7 +40,7 @@ LEARNING, Zhong et al*](seq2sql.png){ width=90% }
 #### Machine Learning in Databases
 - Machine learning methods on data
 - Reduces data movement by putting libraries in the database
-- e.g. 2010s Parameter Server(distributed training), Apache Spark(framework for distribution of tasks for analytics), `*Apache MADlib*, which implements
+- e.g. 2010s Parameter Server(distributed training), Apache Spark(framework for distribution of tasks for analytics), *Apache MADlib*, which implements
 	+ bayes classifier
 	+ clustering
 	+ association rules
@@ -79,6 +79,7 @@ Self-Management of Databases
 
 - _Peloton - Self Driving Database_
 	+ replacement of human database manager
+	+ DBMS designed to optimize latency
 
 ![*Self-Driving Database Management Systems, Pavlo et al*](peloton.png)
 
@@ -103,7 +104,7 @@ Self-Management of Databases
 - Performance of Index Access can be unintuitively enhanced by predicting the index of a searched instance with a Neural Network or Linear Regression
 - Shown to result in equally good or better performance than conventional Index Structures
 
-### Learned Index Structures by Example
+### Learned Index Structures by Strategies
 
 #### Searching the index of a key
 - Similar to every other model used
@@ -157,6 +158,21 @@ Self-Management of Databases
 	1. 1 - 8 - 1 Auto Encoder
 	2. Result is predicted position
 
+### Performance of RMI Example
+\begin{tabular}{l r r}
+	& LIS(in microseconds) & B-Tree(in microseconds)\\ \hline
+	Sequential keys & & \\ \hline
+	Lookup key & 1516 & 399 \\
+	Lookup key, fetch from array & 3408 & 2972 \\
+	Lookup key, fetch from index & 3408 & 10140 \\ \hline
+	Random keys within a range \\ \hline
+	Lookup key & 1563 & 1845 \\
+	Lookup key, fetch from array & 3524 & 4241 \\
+	Lookup key, fetch from index & 3524 & 11555 \\
+\end{tabular}
+
+Table 1: *Inference time comparison between learned index structure and B-Tree, measurements from Taranpreet Kaur's  Master Thesis *
+
 ### Learned Index Structures Conclusion
 
 #### Advantages
@@ -205,7 +221,7 @@ Optimization by "Software 2.0"
 -   Well trained neural nets outperform code implementation
 
 ### Advantages
-![*https://medium.com/@karpathy/software-2-0-a64152b37c35, Karpathy*](so2.png){ height=50% }
+![*https://medium.com/@karpathy/software-2-0-a64152b37c35, Karpathy*](so2.png){ height=40% }
 
 #### Better Runtime Predictability
 - Requires same amount of memory each iteration &rarr; low
